@@ -1,25 +1,40 @@
 // 冒泡排序
-function bubbleSort(array) {
-    let n = array.length;
-    let t;
 
-    for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i; j++) {
+function comparator(a, b) {
+    return a - b;
+}
+
+/**
+ * Bubble sort
+ * O(N^2)
+ * 
+ * @param {Array} array 排序array
+ * @param {Function} cmp 自定义排序比较函数
+ * @return {Array} 排序之后array
+ */
+function bubbleSort(array, cmp) {
+    cmp = cmp || comparator;
+    let temp;
+
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - 1 - i; j++) {
             //比较大小，交换位置
-            if (array[j] > array[j + 1]) {
-                t = array[j];
+            if (cmp(array[j], array[j + 1]) > 0) {
+                temp = array[j];
                 array[j] = array[j + 1];
-                array[j + 1] = t;
+                array[j + 1] = temp;
             }
         }
     }
     return array;
 }
 
-bubbleSort([2, 5, 1, 0, 4, 100]);
 
 
-//由属性排某个对象
+// test
+bubbleSort([2, 5, 1, 0, 4, 100]);  //[0, 1, 2, 4, 5, 100]
+
+
 var data = [
     {
         id: 1,
@@ -27,7 +42,7 @@ var data = [
     },
     {
         id: 2,
-        age: 8
+        age: 42
     },
     {
         id: 3,
@@ -35,29 +50,18 @@ var data = [
     },
     {
         id: 4,
-        age: 8
+        age: 9
     },
     {
         id: 5,
         age: 7
+    },
+    {
+        id: 5,
+        age: 45
     }
 ];
 
-function bubbleSortObj(array) {
-    let n = array.length;
-    let t;
-
-    for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            //比较大小，交换位置
-            if (array[j].age > array[j + 1].age) {
-                t = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = t;
-            }
-        }
-    }
-    return array;
-}
-
-console.log(bubbleSortObj(data));
+bubbleSort(data, (a, b) => {
+    return a.age - b.age;
+})
