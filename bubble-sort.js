@@ -1,6 +1,4 @@
-// 冒泡排序
-
-function comparator(a, b) {
+function compare(a, b) {
     return a - b;
 }
 
@@ -8,12 +6,12 @@ function comparator(a, b) {
  * Bubble sort
  * O(N^2)
  * 
- * @param {Array} array 排序array
+ * @param {Array} array 要排序数组
  * @param {Function} cmp 自定义排序比较函数
- * @return {Array} 排序之后array
+ * @return {Array} 排序之后数组
  */
 function bubbleSort(array, cmp) {
-    cmp = cmp || comparator;
+    cmp = cmp || compare;
     let temp;
 
     for (let i = 0; i < array.length - 1; i++) {
@@ -35,7 +33,7 @@ function bubbleSort(array, cmp) {
 bubbleSort([2, 5, 1, 0, 4, 100]);  //[0, 1, 2, 4, 5, 100]
 
 
-var data = [
+let data = [
     {
         id: 1,
         age: 19
