@@ -141,7 +141,73 @@ class Stack {
     }
 }
 
-let A = new Queue([2, 4, 1, 2, 5, 6]);
-let B = new Queue([3, 1, 3, 5, 6, 4]);
-let C = new Stack();
+let a = new Queue([2, 4, 1, 2, 5, 6]);
+let b = new Queue([3, 1, 3, 5, 6, 4]);
+let c = new Stack();
+
+
+// 标记数组，标记那些牌在桌面上
+let book = new Array(10);
+let t;
+
+for (let i = 0; i <= 9; i++) {
+    book[i] = 0;
+}
+debugger;
+//队列不为空的是循环
+// while (a.head < a.tail && b.head < b.tail) {
+while (a.data.length !== 0 && b.data.length !== 0) {
+    debugger;
+    // a出一张牌
+    t = a.data.shift();
+
+    if (book[t] === 0) { // 表明桌上没有牌面为t的牌
+        // a.head++;
+        a.data.shift();
+        c.top++;
+        c.data[c.top] = t;
+        book[t] = 1;
+    } else {  //a可以赢牌
+
+        let k = a.data.shift();
+        a.data.push(k);
+
+        // 依次把赢的牌放入手中
+        while (c.data[c.top] != t) {
+            book[c.data[c.top]] = 0; //取消标记
+            a.data.push(c.data[c.top]);
+            c.top--;
+        }
+    }
+
+    //b出一张牌
+    t = b.data.shift();
+    if (book[t] === 0) { // 表明桌上没有牌面为t的牌
+        // a.head++;
+        b.data.shift();
+        c.top++;
+        c.data[c.top] = t;
+        book[t] = 1;
+    } else {  //a可以赢牌
+
+        let k = b.data.shift();
+        b.data.push(k);
+
+        // 依次把赢的牌放入手中
+        while (c.data[c.top] != t) {
+            book[c.data[c.top]] = 0; //取消标记
+            b.data.push(c.data[c.top]);
+            c.top--;
+        }
+    }
+}
+
+
+if (a.data.length === 0) {
+    console.log("b赢")
+    console.log("b手中的牌是", b.data)
+} else if (b.data.length === 0) {
+    console.log("a赢")
+    console.log("a手中的牌是", a.data)
+}
 
