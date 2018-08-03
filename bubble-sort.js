@@ -3,7 +3,7 @@ function compare(a, b) {
 }
 
 /**
- * Bubble sort
+ * Bubble sort 冒泡排序
  * O(N^2)
  * 
  * @param {Array} array 要排序数组

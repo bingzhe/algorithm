@@ -39,7 +39,7 @@ let quickSort = (function () {
     }
 
     /**
-     * quick sort
+     * quick sort 快速排序
      * O(N log(N))
      * 
      * @param {Array} array 要排序数组
