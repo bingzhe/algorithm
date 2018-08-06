@@ -18,7 +18,7 @@ var Timer = {
 };
 
 /**
- * @param Number n 要排列的1~n
+ * @param {Number} n 要排列的1~n
  * @return 所有的情况
  */
 function permutation(n) {
@@ -29,7 +29,6 @@ function permutation(n) {
     for (let i = 0; i <= n; i++) {
         book.push(0);
     };
-    console.log(book.length);
 
     function dfs(step) {
 
