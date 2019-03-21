@@ -18,8 +18,8 @@ var Timer = {
 };
 
 /**
- * @param {Number} n 要排列的1~n
- * @return 所有的情况
+     * @param {Number} n 要排列的1~n
+     * @return 所有的情况
  */
 function permutation(n) {
     let a = [], //排列的位置的数组
